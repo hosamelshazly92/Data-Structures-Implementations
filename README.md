@@ -1,2 +1,2 @@
-# Data-Structures-implementations
+# Data-Structures-Implementations
 JavaScript data structures implementations repository
