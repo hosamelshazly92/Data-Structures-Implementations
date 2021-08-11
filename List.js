@@ -85,4 +85,52 @@ class List {
         this.dataStore = [];
         this.listSize = this.pos = 0;
     }
+
+    // determine if a value is in the list
+    contain(elm) {
+        for(let i = 0; i < this.dataStore.length; ++i) {
+            if(this.dataStore[i] == elm) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // traverse the list
+    front() {
+        return this.pos = 0;
+    }
+
+    end() {
+        return this.pos = this.listSize - 1;
+    }
+
+    currPos() {
+        return this.pos;
+    }
+
+    prev() {
+        if(this.pos > 0) {
+            return --this.pos;
+        }
+        return this.pos;
+    }
+
+    next() {
+        if(this.pos < this.listSize - 1) {
+            return ++this.pos;
+        }
+        return false;
+    }
+
+    moveTo(position) {
+        if(position <= this.listSize - 1) {
+            return this.pos = position;
+        }
+        return false;
+    }
+
+    getElement() {
+        return this.dataStore[this.pos];
+    }
 }
