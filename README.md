@@ -4,7 +4,7 @@ JavaScript data structures implementations repository
 
 ## List ADT (Abstract Data Type)
 
-a list is an ordered sequence of data
+A list is an ordered sequence of data
 
 ### Usage
 
@@ -26,7 +26,7 @@ a list is an ordered sequence of data
 | currPos    | function | Returns the current position in list             |
 | moveTo     | function | Moves the current position to specified position |
 
-create list class implementation
+Create list class implementation
 
 ```javascript
 let movies = new List();
@@ -39,13 +39,15 @@ movies.append("Fight Club");
 movies.append("Inception");
 
 console.log(movies.toString());
+// output ["The Dark Knight", "Star Wars", "The Matrix", "The Godfather", "Fight Club", "Inception"]
 ```
 
-create list class iterator
+Create list class iterator
 
 ```javascript
 for (let i = movies.currPos(); i < movies.length; i++) {
     console.log(movies.getElement());
     movies.next();
 }
+// output The Dark Knight Star Wars The Matrix The Godfather Fight Club Inception
 ```
