@@ -6,25 +6,27 @@ JavaScript data structures implementations repository
 
 A list is an ordered sequence of data
 
-### Usage
+## Usage
 
-| name       |   type   | description                                      |
-| :--------- | :------: | :----------------------------------------------- |
-| listSize   | property | Number of elements in list                       |
-| pos        | property | Current position in list                         |
-| length     | property | Returns the number of elements in list           |
-| clear      | function | Clears all elements from list                    |
-| toString   | function | Returns string representation of list            |
-| getElement | function | Returns element at current position              |
-| insert     | function | Inserts new element after existing element       |
-| append     | function | Adds new element to end of list                  |
-| remove     | function | Removes element from list                        |
-| front      | function | Sets current position to first element of list   |
-| end        | function | Sets current position to last element of list    |
-| prev       | function | Moves current position back one element          |
-| next       | function | Moves current position forward one element       |
-| currPos    | function | Returns the current position in list             |
-| moveTo     | function | Moves the current position to specified position |
+| name       |   type   | description                                       |
+| :--------- | :------: | :------------------------------------------------ |
+| listSize   | property | Get the number of elements in the list            |
+| pos        | property | Get the current position in the list              |
+| length     | property | Return the number of elements in the list         |
+| clear      | function | Clear all elements from the list                  |
+| toString   | function | Return string representation of the list          |
+| getElement | function | Return element at current position                |
+| insert     | function | Insert new element after existing element         |
+| append     | function | Add new element to the end of the list            |
+| remove     | function | Remove element from the list                      |
+| front      | function | Set current position to the first element         |
+| end        | function | Set current position to the last element of list  |
+| prev       | function | Move current position back one element            |
+| next       | function | Move current position forward one element         |
+| currPos    | function | Return the current position in the list           |
+| moveTo     | function | Move the current position to a specified position |
+
+## List Class Implementation
 
 Create List class implementation
 
@@ -54,3 +56,22 @@ for (let i = movies.currPos(); i < movies.length - 1; i++) {
 }
 // output The Dark Knight Star Wars The Matrix The Godfather Fight Club Inception
 ```
+
+## Stack
+
+A stack is a list of elements that are accessible only from the top, aka LIFO
+
+## Usage
+
+| name   |   type   | description                                     |
+| :----- | :------: | :---------------------------------------------- |
+| length | property | Get the number of elements in the stack         |
+| empty  | property | Verify whether the stack has no elements        |
+| peek   | function | Return the value stored at the top of the stack |
+| push   | function | Add elements to the stack                       |
+| pop    | function | Remove elements from the stack                  |
+| clear  | function | Remove all elements from the stack              |
+
+## Stack Class Implementation
+
+Create Stack class implementation
