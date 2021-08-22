@@ -180,3 +180,27 @@ function factorial(num) {
 console.log(factorial(5));
 // output 120
 ```
+
+---
+
+## Queue
+
+A stack is used to store data in the order in which they occur as opposed to a
+stack, aka `FIFO`
+
+### Usage
+
+| name     |   type   | description                                      |
+| :------- | :------: | :----------------------------------------------- |
+| length   | property | Get the number of elements in the queue          |
+| empty    | property | check whether the queue has no elements          |
+| toString | function | Return string representation of the queue        |
+| enqueue  | function | Add elements to the queue                        |
+| dequeue  | function | Remove elements from the queue                   |
+| clear    | function | Remove all elements from the queue               |
+| front    | function | Set current position to the first element        |
+| end      | function | Set current position to the last element of list |
+
+### Queue Class Implementation
+
+Create Queue class implementation
