@@ -26,7 +26,7 @@ A list is an ordered sequence of data
 | currPos    | function | Returns the current position in list             |
 | moveTo     | function | Moves the current position to specified position |
 
-Create list class implementation
+Create List class implementation
 
 ```javascript
 let movies = new List();
@@ -42,10 +42,13 @@ console.log(movies.toString());
 // output ["The Dark Knight", "Star Wars", "The Matrix", "The Godfather", "Fight Club", "Inception"]
 ```
 
-Create list class iterator
+Implement List class iterator
 
 ```javascript
-for (let i = movies.currPos(); i < movies.length; i++) {
+// reset to first position in the list
+movies.front();
+
+for (let i = movies.currPos(); i < movies.length - 1; i++) {
     console.log(movies.getElement());
     movies.next();
 }
