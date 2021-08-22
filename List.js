@@ -12,7 +12,7 @@ class List {
         return this.listSize;
     }
 
-    // retrieving all elements in the list
+    // get all elements in the list
     toString() {
         return this.dataStore;
     }
@@ -44,7 +44,7 @@ class List {
         return false;
     }
 
-    // insert an element to the list
+    // add an element to the list
     insert(idx, elm) {
         let foundAt = this.find(idx);
         if (foundAt > -1) {

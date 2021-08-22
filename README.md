@@ -59,19 +59,22 @@ for (let i = movies.currPos(); i < movies.length - 1; i++) {
 
 ## Stack
 
-A stack is a list of elements that are accessible only from the top, aka LIFO
+A stack is a list of elements that are accessible only from the top, aka **LIFO**
 
 ### Usage
 
-| name   |   type   | description                                     |
-| :----- | :------: | :---------------------------------------------- |
-| length | property | Get the number of elements in the stack         |
-| empty  | property | Verify whether the stack has no elements        |
-| peek   | function | Return the value stored at the top of the stack |
-| push   | function | Add elements to the stack                       |
-| pop    | function | Remove elements from the stack                  |
-| clear  | function | Remove all elements from the stack              |
+| name     |   type   | description                                     |
+| :------- | :------: | :---------------------------------------------- |
+| length   | property | Get the number of elements in the stack         |
+| empty    | property | check whether the stack has no elements         |
+| toString | function | Return string representation of the stack       |
+| peek     | function | Return the value stored at the top of the stack |
+| push     | function | Add elements to the stack                       |
+| pop      | function | Remove elements from the stack                  |
+| clear    | function | Remove all elements from the stack              |
 
 ### Stack Class Implementation
 
 Create Stack class implementation
+
+#### Multiple Base Conversions

@@ -11,6 +11,20 @@ class Stack {
         return this.top;
     }
 
+    // check whether the stack has no elements
+    empty() {
+        if (this.top === 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // get all elements in the stack
+    toString() {
+        return this.dataStore;
+    }
+
     // get the top element of the stack
     peek() {
         return this.dataStore[this.top - 1];
@@ -23,7 +37,7 @@ class Stack {
 
     // removw an element from the stack
     pop() {
-        this.dataStore[--this.top];
+        return this.dataStore[--this.top];
     }
 
     // removw all elements from the stack
