@@ -110,3 +110,5 @@ class List {
         return this.dataStore[this.pos];
     }
 }
+
+module.exports = List;

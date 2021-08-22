@@ -45,3 +45,5 @@ class Stack {
         this.top = 0;
     }
 }
+
+module.exports = Stack;
