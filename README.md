@@ -57,9 +57,11 @@ for (let i = movies.currPos(); i < movies.length - 1; i++) {
 // output The Dark Knight Star Wars The Matrix The Godfather Fight Club Inception
 ```
 
+---
+
 ## Stack
 
-A stack is a list of elements that are accessible only from the top, aka **LIFO**
+A stack is a list of elements that are accessible only from the top, aka `LIFO`
 
 ### Usage
 
@@ -78,3 +80,34 @@ A stack is a list of elements that are accessible only from the top, aka **LIFO*
 Create Stack class implementation
 
 #### Multiple Base Conversions
+
+Convert any given number between bases from 2 through 9 only
+
+The performing algorithm:
+
+1. Push `num % base` to the stack
+2. Number is updated to be `num / base` for the next iteration
+3. Repeat steps 1 & 2 until `num = 0`
+4. Final result is built from popping the stack
+
+```javascript
+function multipleBase(num, base) {
+    let stack = new Stack();
+
+    do {
+        stack.push(num % base);
+        num = Math.floor((num /= base));
+    } while (num > 0);
+
+    let result = "";
+
+    while (stack.length > 0) {
+        result += stack.pop();
+    }
+
+    return result;
+}
+
+console.log(multipleBase(32, 2));
+// output 100000
+```
