@@ -140,3 +140,43 @@ function isPalindrome(word) {
 console.log(isPalindrome("rotator"));
 // output true
 ```
+
+### Recursion
+
+Recursive definition of the factorial function
+
+```javascript
+function factorial(num) {
+    if (num === 0) {
+        return 1;
+    } else {
+        return num * factorial(num - 1);
+    }
+}
+
+console.log(factorial(5));
+// output 120
+```
+
+Simulating recursive processes using a stack
+
+```javascript
+function factorial(num) {
+    let stack = new Stack();
+
+    while (num > 1) {
+        stack.push(num--);
+    }
+
+    let result = 1;
+
+    while (stack.length > 0) {
+        result *= stack.pop();
+    }
+
+    return result;
+}
+
+console.log(factorial(5));
+// output 120
+```
