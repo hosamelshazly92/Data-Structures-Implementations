@@ -6,7 +6,7 @@ JavaScript data structures implementations repository
 
 A list is an ordered sequence of data
 
-## Usage
+### Usage
 
 | name       |   type   | description                                       |
 | :--------- | :------: | :------------------------------------------------ |
@@ -26,7 +26,7 @@ A list is an ordered sequence of data
 | currPos    | function | Return the current position in the list           |
 | moveTo     | function | Move the current position to a specified position |
 
-## List Class Implementation
+### List Class Implementation
 
 Create List class implementation
 
@@ -61,7 +61,7 @@ for (let i = movies.currPos(); i < movies.length - 1; i++) {
 
 A stack is a list of elements that are accessible only from the top, aka LIFO
 
-## Usage
+### Usage
 
 | name   |   type   | description                                     |
 | :----- | :------: | :---------------------------------------------- |
@@ -72,6 +72,6 @@ A stack is a list of elements that are accessible only from the top, aka LIFO
 | pop    | function | Remove elements from the stack                  |
 | clear  | function | Remove all elements from the stack              |
 
-## Stack Class Implementation
+### Stack Class Implementation
 
 Create Stack class implementation
