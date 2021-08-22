@@ -111,3 +111,32 @@ function multipleBase(num, base) {
 console.log(multipleBase(32, 2));
 // output 100000
 ```
+
+#### Palindromes
+
+Determine whether or not a given string is a palindrome
+
+```javascript
+function isPalindrome(word) {
+    let stack = new Stack();
+
+    for (let i = 0; i < word.length; i++) {
+        stack.push(word[i]);
+    }
+
+    let rword = "";
+
+    while (stack.length > 0) {
+        rword += stack.pop();
+    }
+
+    if (word === rword) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(isPalindrome("rotator"));
+// output true
+```
