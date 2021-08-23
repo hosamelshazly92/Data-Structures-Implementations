@@ -397,3 +397,52 @@ table.showDistro();
 console.log(table.get("second"));
 // output green
 ```
+
+### Handling Collisions
+
+#### Seperate Chaining
+
+When two keys generate the same hash value, each key can be stored in a different position of another array
+
+```javascript
+// Hash class
+class Hash {
+    ...
+    buildChains() {
+        for (let i = 0; i < this.table.length; i++) {
+            this.table[i] = new Array();
+        }
+    }
+    ...
+}
+```
+
+#### Linear Probing
+
+When collision happens the new key is placed in the next empty element in the table
+
+```javascript
+// Hash class
+class Hash {
+    ...
+    constructor() {
+        this.values = [];
+    }
+
+    put(key, data) {
+        let pos = this.hashing(key);
+        if (this.table[pos] == undefined) {
+            this.table[pos] = key;
+            this.values[pos] = data;
+        } else {
+            while (this.table[pos] != undefined) {
+                pos++;
+                }
+                this.table[pos] = key;
+                this.values[pos] = data;
+        }
+        this.table[pos] = data;
+    }
+    ...
+}
+```
