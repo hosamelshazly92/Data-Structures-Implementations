@@ -141,7 +141,7 @@ console.log(isPalindrome("rotator"));
 // output true
 ```
 
-### Recursion
+#### Recursion
 
 Recursive definition of the factorial function
 
@@ -204,3 +204,51 @@ stack, aka `FIFO`
 ### Queue Class Implementation
 
 Create Queue class implementation
+
+#### Sorting Data with Queues
+
+Perform a radix sort
+
+Algorithm impelementation:
+
+-   Digit represent either 1s or 10s
+-   Queues represent bins, total of 10 queues one for each digit
+-   Determine 1 and 10 digits using modules and integer division operators
+-   Collect numbers from the queues until queues are empty
+
+```javascript
+// an array of numbers not bigger than 100
+let nums = [56, 10, 75, 6, 12, 29, 36, 49, 69, 75, 81, 95];
+
+let queues = [];
+
+for (let i = 0; i < 10; i++) {
+    queues[i] = new Queue();
+}
+
+function distribute(nums, queues, digit) {
+    for (let i = 0; i < 10; i++) {
+        if (digit == 1) {
+            queues[nums[i] % 10].enqueue(nums[i]);
+        } else {
+            queues[Math.floor(nums[i] / 10)].enqueue(nums[i]);
+        }
+    }
+}
+
+function collect(queues, nums) {
+    let i = 0;
+    for (let digit = 0; digit < 10; digit++) {
+        while (!queues[digit].empty()) {
+            nums[i++] = queues[digit].dequeue();
+        }
+    }
+}
+
+distribute(nums, queues, 1);
+collect(queues, nums);
+distribute(nums, queues, 10);
+collect(queues, nums);
+console.log(nums);
+// output [6, 10, 12, 29, 36, 49, 56, 69, 75, 75, 81, 95];
+```
