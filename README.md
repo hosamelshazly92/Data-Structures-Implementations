@@ -217,7 +217,7 @@ Algorithm impelementation:
 -   Collect numbers from the queues until queues are empty
 
 ```javascript
-// an array of numbers not bigger than 100
+// an array of numbers not bigger than 100 and doesn't contain empty elements
 let nums = [56, 10, 75, 6, 12, 29, 36, 49, 69, 75, 81, 95];
 
 let queues = [];
