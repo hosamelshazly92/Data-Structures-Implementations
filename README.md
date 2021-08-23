@@ -446,3 +446,42 @@ class Hash {
     ...
 }
 ```
+
+## Set
+
+A set is an unordered collection of ununique members where no member occurs more than once
+
+#### Set Definitions
+
+-   A set containing no members is called `empty set`
+-   Two sets are equal if they contain exactly the same members
+-   All members of a subset are included in the larger set
+
+### Usage
+
+| name       |   type   | description                                                         |
+| :--------- | :------: | :------------------------------------------------------------------ |
+| add        | function | Add new member to the list                                          |
+| remove     | function | Remove a member from the set                                        |
+| show       | function | Get all members in the set                                          |
+| size       | function | Get the size of the set                                             |
+| contains   | function | Check whether a member is in the set                                |
+| union      | function | Get the union of two sets                                           |
+| intersect  | function | Get the intersection of two sets                                    |
+| subset     | function | Check whether the subset length is less than the larger set         |
+| difference | function | Get a set containing members in the first set but not in the second |
+
+### Set Class Implementation
+
+```javascript
+let primary = new Set();
+primary.add("red");
+primary.add("blue");
+
+let secondary = new Set();
+secondary.add("orange");
+secondary.add("magenta");
+
+console.log(primary.union(secondary));
+// output [ 'red', 'blue', 'orange', 'magenta' ]
+```
