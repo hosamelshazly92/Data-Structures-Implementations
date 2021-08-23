@@ -337,7 +337,7 @@ A dictionary stores data as key value pairs
 | show   | function | Get all items in the dictionary              |
 | sort   | function | Sort all items in the dictionary             |
 | count  | function | Get the count of all items in the dictionary |
-| clear  | utility  | Remove all items from the dictionary         |
+| clear  | function | Remove all items from the dictionary         |
 
 ### Dictionary Class Implementation
 
@@ -356,4 +356,42 @@ console.log(cars.count());
 // output 4
 console.log(cars.sort());
 // output { color: 'silver', make: 'BMW', model: 'X6', year: '2021' }
+```
+
+## Hash
+
+Hashing uses a data structure called a hash table, to store a piece of data the key is mapped into a number in range from 0 through the hash table size using a hash function
+
+#### Hashing Function
+
+The hashing function computes a hash value through summing the ASCII value for each string
+
+#### Collision
+
+Avoid collision by setting the array size for the hash table to a prime number, e.g. 137, and multiplying the result of the sum of the ASCII values by a small prime number, e.g. 37
+
+### Usage
+
+| name       |   type   | description                |
+| :--------- | :------: | :------------------------- |
+| hashing    | utility  | Hash function definition   |
+| put        | function | Insert data into the table |
+| showDistro | function | Get all data in the table  |
+| get        | function | Get an item in the table   |
+
+### Hash Class Implementation
+
+```javascript
+table.put("first", "red");
+table.put("second", "green");
+table.put("third", "blue");
+
+table.showDistro();
+// output
+// red
+// green
+// blue
+
+console.log(table.get("second"));
+// output green
 ```
