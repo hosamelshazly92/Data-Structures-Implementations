@@ -322,3 +322,38 @@ cities.displayReverse();
 // B
 // A
 ```
+
+## Dictionary
+
+A dictionary stores data as key value pairs
+
+### Usage
+
+| name   |   type   | description                                  |
+| :----- | :------: | :------------------------------------------- |
+| add    | function | Insert new item into the dictionary          |
+| find   | function | Get an item in the dictionary                |
+| remove | function | Remove an item from the dictionary           |
+| show   | function | Get all items in the dictionary              |
+| sort   | function | Sort all items in the dictionary             |
+| count  | function | Get the count of all items in the dictionary |
+| clear  | utility  | Remove all items from the dictionary         |
+
+### Dictionary Class Implementation
+
+```javascript
+let cars = new Dictionary();
+
+cars.add("make", "BMW");
+cars.add("model", "X6");
+cars.add("year", "2021");
+cars.add("color", "silver");
+
+console.log(cars.show());
+// output { make: 'BMW', model: 'X6', year: '2021', color: 'silver' }
+
+console.log(cars.count());
+// output 4
+console.log(cars.sort());
+// output { color: 'silver', make: 'BMW', model: 'X6', year: '2021' }
+```
