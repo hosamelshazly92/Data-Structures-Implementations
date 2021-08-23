@@ -258,14 +258,17 @@ Linked list design involves creating two classes, a Node class for adding nodes 
 
 ### Usage
 
-| name         |   type   | description                                 |
-| :----------- | :------: | :------------------------------------------ |
-| head         | property | The only property stored in the linked list |
-| display      | function | Return nodes in the linked list             |
-| insert       | function | Insert a node to the linked list            |
-| remove       | function | Remove a node from the linked list          |
-| find         | utility  | Get a node in the linked list               |
-| findPrevious | utility  | Get a previous node in the linked list      |
+| name         |   type   | description                                  |
+| :----------- | :------: | :------------------------------------------- |
+| head         | property | The only property stored in the linked list  |
+| display      | function | Return nodes in the linked list              |
+| insert       | function | Insert a node to the linked list             |
+| remove       | function | Remove a node from the linked list           |
+| show         | function | Get the current node in the linked list      |
+| advance      | function | Move to the next node in the linked list     |
+| back         | function | Move to the previous node in the linked list |
+| find         | utility  | Get a node in the linked list                |
+| findPrevious | utility  | Get a previous node in the linked list       |
 
 ### Linked List Class Implementation
 

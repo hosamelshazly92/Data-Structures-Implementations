@@ -7,6 +7,7 @@ function Node(elm) {
 class LinkedList {
     constructor() {
         this.head = new Node("head");
+        this.currNode = this.head;
     }
 
     // get a node in the linked list
@@ -51,6 +52,23 @@ class LinkedList {
         if (prevNode.next !== null) {
             prevNode.next = nextNode;
         }
+    }
+
+    // show the current node in the linked list
+    show() {
+        console.log(this.currNode.element);
+    }
+
+    // move to the next node in the linked list
+    advance() {
+        console.log(this.currNode.next.element);
+        this.currNode = this.currNode.next;
+    }
+
+    // movr to the previous node in the linked list
+    back() {
+        this.currNode = this.findPrevious(this.currNode.element);
+        console.log(this.currNode.element);
     }
 }
 
