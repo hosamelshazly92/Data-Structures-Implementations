@@ -9,7 +9,7 @@ class LinkedList {
         this.head = new Node("head");
     }
 
-    // helper function get a node in the linked list
+    // get a node in the linked list
     find(itm) {
         let currNode = this.head;
         while (currNode.element !== itm) {
@@ -18,7 +18,7 @@ class LinkedList {
         return currNode;
     }
 
-    // helper function get a node in the linked list
+    // get a node in the linked list
     findPrevious(itm) {
         let currNode = this.head;
         while (currNode.next !== null && currNode.next.element !== itm) {

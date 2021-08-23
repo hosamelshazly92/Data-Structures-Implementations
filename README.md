@@ -28,8 +28,6 @@ A list is an ordered sequence of data
 
 ### List Class Implementation
 
-Create List class implementation
-
 ```javascript
 let movies = new List();
 
@@ -77,8 +75,6 @@ A stack is a list of elements that are accessible only from the top, aka `LIFO`
 | clear    | function | Remove all elements from the stack              |
 
 ### Stack Class Implementation
-
-Create Stack class implementation
 
 #### Multiple Base Conversions
 
@@ -203,8 +199,6 @@ A stack is used to store data in the order in which they occur as opposed to a s
 
 ### Queue Class Implementation
 
-Create Queue class implementation
-
 #### Sorting Data with Queues
 
 Perform a radix sort
@@ -264,16 +258,16 @@ Linked list design involves creating two classes, a Node class for adding nodes 
 
 ### Usage
 
-| name    |   type   | description                                     |
-| :------ | :------: | :---------------------------------------------- |
-| head    | property | The only property stored in the linked list     |
-| display | function | Return string representation of the linked list |
-| insert  | function | Insert a node to the linked list                |
-| remove  | function | Remove a node from the linked list              |
+| name         |   type   | description                                 |
+| :----------- | :------: | :------------------------------------------ |
+| head         | property | The only property stored in the linked list |
+| display      | function | Return nodes in the linked list             |
+| insert       | function | Insert a node to the linked list            |
+| remove       | function | Remove a node from the linked list          |
+| find         | utility  | Get a node in the linked list               |
+| findPrevious | utility  | Get a previous node in the linked list      |
 
 ### Linked List Class Implementation
-
-Create Linked List class implementation
 
 ```javascript
 let cities = new LinkedList();
@@ -291,4 +285,37 @@ cities.display();
 // B
 // C
 // D
+```
+
+## Doubly Linked List
+
+Doubly linked list simplifies the procedure of backward traversing by adding link to the previous node
+
+### Usage
+
+| name           |   type   | description                                        |
+| :------------- | :------: | :------------------------------------------------- |
+| head           | property | The only property stored in the doubly linked list |
+| display        | function | Return nodes stored in the doubly linked list      |
+| displayReverse | function | Return nodes in reverse order                      |
+| insert         | function | Insert a node to the doubly linked list            |
+| remove         | function | Remove a node from the doubly linked list          |
+| findLast       | utility  | Get last node in the doubly linked list            |
+
+### Doubly Linked List Class Implementation
+
+```javascript
+let cities = new DoublyLinkedList();
+
+cities.insert("A", "head");
+cities.insert("B", "A");
+cities.insert("C", "B");
+cities.insert("D", "C");
+
+cities.displayReverse();
+// output
+// D
+// C
+// B
+// A
 ```
