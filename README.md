@@ -382,6 +382,8 @@ Avoid collision by setting the array size for the hash table to a prime number, 
 ### Hash Class Implementation
 
 ```javascript
+let table = new Hash();
+
 table.put("first", "red");
 table.put("second", "green");
 table.put("third", "blue");

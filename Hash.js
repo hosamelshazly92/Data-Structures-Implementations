@@ -38,5 +38,3 @@ class Hash {
 }
 
 module.exports = Hash;
-
-let table = new Hash();
