@@ -54,6 +54,7 @@ for (let i = movies.currPos(); i < movies.length - 1; i++) {
     console.log(movies.getElement());
     movies.next();
 }
+
 // output The Dark Knight Star Wars The Matrix The Godfather Fight Club Inception
 ```
 
@@ -185,8 +186,7 @@ console.log(factorial(5));
 
 ## Queue
 
-A stack is used to store data in the order in which they occur as opposed to a
-stack, aka `FIFO`
+A stack is used to store data in the order in which they occur as opposed to a stack, aka `FIFO`
 
 ### Usage
 
@@ -249,6 +249,46 @@ distribute(nums, queues, 1);
 collect(queues, nums);
 distribute(nums, queues, 10);
 collect(queues, nums);
+
 console.log(nums);
 // output [6, 10, 12, 29, 36, 49, 56, 69, 75, 75, 81, 95];
+```
+
+## Linked List
+
+A linked list is a collection of objects called nodes connected with references called links
+
+#### Object-Based Linked List Design
+
+Linked list design involves creating two classes, a Node class for adding nodes and a LinkedList class for nodes insertion, deletion, etc.
+
+### Usage
+
+| name    |   type   | description                                     |
+| :------ | :------: | :---------------------------------------------- |
+| head    | property | The only property stored in the linked list     |
+| display | function | Return string representation of the linked list |
+| insert  | function | Insert a node to the linked list                |
+| remove  | function | Remove a node from the linked list              |
+
+### Linked List Class Implementation
+
+Create Linked List class implementation
+
+```javascript
+let cities = new LinkedList();
+
+cities.insert("A", "head");
+cities.insert("B", "A");
+cities.insert("C", "B");
+cities.insert("Z", "C");
+cities.insert("D", "Z");
+cities.remove("Z");
+
+cities.display();
+// output
+// A
+// B
+// C
+// D
 ```
