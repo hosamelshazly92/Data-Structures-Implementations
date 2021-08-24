@@ -136,4 +136,4 @@ function postOrder(node) {
     }
 }
 
-module.exports = BST;
+module.exports = { Node, BST };

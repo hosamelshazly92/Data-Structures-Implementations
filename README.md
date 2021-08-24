@@ -1,4 +1,4 @@
-# Data-Structures-Implementations
+# Data Structures Implementations
 
 JavaScript data structures implementations repository
 
@@ -656,7 +656,7 @@ Determine the insertion point algorithm:
 4. Set the current node to be the right child of the current node
 5. If the right child of the current node is null then insert the new node here and exit the loop, otherwise, skip to the next iteration of the loop
 
-### BST Searches
+### BST Search
 
 BST typically performs 3 type of searching:
 
@@ -766,6 +766,8 @@ class BST {
 
 ## Graphs
 
+The graph structure provides much more flexibility than a binary tree because there can be many edges linked to a single vertex
+
 #### Graphs Definition
 
 -   A graph consists of a set of **_vertices_** and a set of **_edges_**
@@ -775,10 +777,198 @@ class BST {
 -   Directed graphs indicate the flow direction from vertex to vertex
 -   If a graph is not ordered then it is called an **_unordered_** graph, or just a **_graph_**
 -   A **_path_** is a sequence of vertices in a graph
--   The **_ path length_** is the number of edges from the first vertex in the path to the last vertex
+-   The **_path length_** is the number of edges from the first vertex in the path to the last vertex
 -   A path can also consist of a vertex to itself which is called a **_loop_**, loops have a length of 0
 -   A **_cycle_** is a path with at least one edge whose first and last vertices are the same
 -   A **_simple cycle_** is one with no repeated edges or vertices for both directed and undirected graphs
 -   Paths that repeat other vertices besides the first and last vertices are called **_general_** cycles
 -   Two vertices are considered strongly connected if there is a path from the first vertex to the second vertex and vice versa
 -   If the graph is a directed graph and all its vertices are strongly connected, then the directed graph is considered strongly connected
+
+### Vertices
+
+The vertex class stores the vertices of a graph, it has two data members:
+
+-   `Label` for identifying the vertex
+-   `wasVisited` storing a Boolean value to indicate whether the vertex has been visited
+
+```javascript
+function Vertex(label = "vertex") {
+    this.label = label;
+}
+```
+
+### Edges
+
+Edges describe the structure of a graph
+
+-   The method used for representing the edges of a graph is called an `adjacency list`
+-   Another method is called an `adjacency matrix`, this is a two-dimensional array in which the elements of the array indicate whether an edge exists between two vertices
+
+```javascript
+function Graph(vtx) {
+    ...
+    this.addEdge = function (a, b) {
+        this.adj[a].push(b);
+        this.adj[b].push(a);
+        this.edges++;
+    };
+    ...
+}
+```
+
+### Graph Class Implementation
+
+```javascript
+let graph = new Graph(4);
+
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(1, 3);
+
+console.log(graph.show());
+// output { '0': [ '1', '2' ], '1': [ '0', '3' ], '2': [ '0' ], '3': [ '1' ] }
+```
+
+### Graph Search
+
+There are two fundamental searches that can be performed on a graph: `depth-first` search and `breadth-first` search
+
+#### Depth-First Search (DFS)
+
+Check all paths that can be followed in a graph
+
+```javascript
+function Graph(vtx) {
+    ...
+    this.dfs = function (vtx = 0) {
+        this.marked[vtx] = true;
+
+        for (let i in this.adj[vtx]) {
+            if (!this.marked[i]) {
+                this.dfs(i);
+            }
+        }
+    };
+    ...
+}
+
+let graph = new Graph(5);
+
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(1, 3);
+graph.addEdge(2, 4);
+
+console.log(graph.dfs(0));
+// output
+// 0
+// 1
+// 3
+// 2
+// 4
+```
+
+#### Breadth-First Search (BFS)
+
+BFS moves through a graph layer by layer, first examining layers closer to the first vertex and then moving down to the layers farthest away from the starting vertex
+
+```javascript
+function Graph(vtx) {
+    ...
+    this.bfs = function (start) {
+        let queue = [];
+        this.marked[start] = true;
+        queue.push(start);
+
+        while (queue.length > 0) {
+            let vtx = queue.shift();
+
+            for (let i of this.adj[vtx]) {
+                if (!this.marked[i]) {
+                    this.marked[i] = true;
+                    queue.push(i);
+                }
+            }
+        }
+    };
+    ...
+}
+
+let graph = new Graph(5);
+
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(1, 3);
+graph.addEdge(2, 4);
+
+console.log(graph.bfs(0));
+// output
+// 0
+// 1
+// 3
+// 2
+// 4
+```
+
+### Find The Shortest Path
+
+Modify the breadth-first search algorithm so that it records the paths that lead from one vertex to another vertex, This requires a few modifications to the Graph class:
+
+-   First, an array that keeps track of edges from one vertex to the next `edgeTo`
+
+```javascript
+function Graph(vtx) {
+    ...
+    this.edgeTo = [];
+    ...
+    this.bfs = function (start) {
+        let queue = [];
+        this.marked[start] = true;
+        queue.push(start);
+
+        while (queue.length > 0) {
+            let vtx = queue.shift();
+
+            for (let i of this.adj[vtx]) {
+                if (!this.marked[i]) {
+                    this.edgeTo[i] = vtx;
+                    this.marked[i] = true;
+                    queue.push(i);
+                }
+            }
+        }
+    };
+    ...
+}
+```
+
+-   A function that shows the paths that connect different vertices of a graph `pathTo()`
+
+```javascript
+function Graph(vtx) {
+    ...
+    this.pathTo = function (vtx) {
+        let src = 0;
+
+        if (!this.hasPathTo(vtx)) {
+            return undefined;
+        }
+
+        let path = [];
+
+        for (let i = vtx; i != src; i = this.edgeTo[i]) {
+            path.push(i);
+        }
+
+        path.push(src);
+
+        return path;
+    };
+
+    this.hasPathTo = function (vtx) {
+        return this.marked[vtx];
+    };
+    ...
+}
+```
