@@ -461,7 +461,7 @@ class Hash {
 
 A set is an unordered collection of ununique members where no member occurs more than once
 
-#### Set Definitions
+#### Set Definition
 
 -   A set containing no members is called `empty set`
 -   Two sets are equal if they contain exactly the same members
@@ -505,18 +505,18 @@ Tree is a nonlinear data structure used to store data in a hierarchical manner
 -   Search very quickly as opposed to a linked list
 -   Insert and delete data quickly as opposed to an array
 
-### Trees Definition
+#### Trees Definition
 
--   Made up of a set of nodes connected by edges
--   The top node is called root node
--   The preceding node is called parent node, and the following one is a child node
--   A node withount any children is called leaf node
--   The series of edges followed to get from one node to another is called a path
--   Visiting all nodes in some particular order is known as tree traversal
--   A tree is broken down into levels, the root node is at level 0, its children are at level 1, etc.
--   A node at any level is considered the root of a subtree
--   The depth of a tree can be defined by the number of levels in the tree
--   Each node in a tree has a value called key value
+-   Tress are made up of a set of **_nodes_** connected by **_edges_**
+-   The top node is called **_root node_**
+-   The preceding node is called **_parent node_**, and the following one is a **_child node_**
+-   A node without any children is called **_leaf node_**
+-   The series of edges followed to get from one node to another is called a **_path_**
+-   Visiting all nodes in some particular order is known as **_tree traversal_**
+-   A tree is broken down into **_levels_**, the root node is at level 0, its children are at level 1, etc.
+-   A node at any level is considered the root of a **_subtree_**
+-   The **_tree_** depth can be defined by the number of levels in the tree
+-   Each node in a tree has a value called **_key value_**
 
 ### Binary Tree
 
@@ -763,3 +763,22 @@ class BST {
 ```
 
 ---
+
+## Graphs
+
+#### Graphs Definition
+
+-   A graph consists of a set of **_vertices_** and a set of **_edges_**
+-   A vertex can have a weight, which is sometimes called a **_cost_**
+-   A graph whose pairs are ordered is called a **_directed_** graph, or just a **_digraph_**
+-   When pairs are ordered in a directed graph an arrow is drawn from one pair to another pair
+-   Directed graphs indicate the flow direction from vertex to vertex
+-   If a graph is not ordered then it is called an **_unordered_** graph, or just a **_graph_**
+-   A **_path_** is a sequence of vertices in a graph
+-   The **_ path length_** is the number of edges from the first vertex in the path to the last vertex
+-   A path can also consist of a vertex to itself which is called a **_loop_**, loops have a length of 0
+-   A **_cycle_** is a path with at least one edge whose first and last vertices are the same
+-   A **_simple cycle_** is one with no repeated edges or vertices for both directed and undirected graphs
+-   Paths that repeat other vertices besides the first and last vertices are called **_general_** cycles
+-   Two vertices are considered strongly connected if there is a path from the first vertex to the second vertex and vice versa
+-   If the graph is a directed graph and all its vertices are strongly connected, then the directed graph is considered strongly connected
