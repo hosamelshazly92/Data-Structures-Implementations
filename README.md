@@ -248,6 +248,8 @@ console.log(nums);
 // output [6, 10, 12, 29, 36, 49, 56, 69, 75, 75, 81, 95];
 ```
 
+---
+
 ## Linked List
 
 A linked list is a collection of objects called nodes connected with references called links
@@ -290,6 +292,8 @@ cities.display();
 // D
 ```
 
+---
+
 ## Doubly Linked List
 
 Doubly linked list simplifies the procedure of backward traversing by adding link to the previous node
@@ -322,6 +326,8 @@ cities.displayReverse();
 // B
 // A
 ```
+
+---
 
 ## Dictionary
 
@@ -357,6 +363,8 @@ console.log(cars.count());
 console.log(cars.sort());
 // output { color: 'silver', make: 'BMW', model: 'X6', year: '2021' }
 ```
+
+---
 
 ## Hash
 
@@ -447,6 +455,8 @@ class Hash {
 }
 ```
 
+---
+
 ## Set
 
 A set is an unordered collection of ununique members where no member occurs more than once
@@ -485,3 +495,271 @@ secondary.add("magenta");
 console.log(primary.union(secondary));
 // output [ 'red', 'blue', 'orange', 'magenta' ]
 ```
+
+---
+
+## Binary Search Tree
+
+Tree is a nonlinear data structure used to store data in a hierarchical manner
+
+-   Search very quickly as opposed to a linked list
+-   Insert and delete data quickly as opposed to an array
+
+### Trees Definition
+
+-   Made up of a set of nodes connected by edges
+-   The top node is called root node
+-   The preceding node is called parent node, and the following one is a child node
+-   A node withount any children is called leaf node
+-   The series of edges followed to get from one node to another is called a path
+-   Visiting all nodes in some particular order is known as tree traversal
+-   A tree is broken down into levels, the root node is at level 0, its children are at level 1, etc.
+-   A node at any level is considered the root of a subtree
+-   The depth of a tree can be defined by the number of levels in the tree
+-   Each node in a tree has a value called key value
+
+### Binary Tree
+
+BT is a special type of trees that restrict the number of child nodes to only two nodes, where th child nodes are called left node and right node
+
+```javascript
+function Node(data, left, right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+    this.show = function () {
+        return this.data;
+    };
+}
+```
+
+### Binary Search Tree Implementation
+
+The first object to create is a Node object, then BST class consisting of this node object. There are three traversal functions used with BST: inorder, preorder and postorder:
+
+-   `Inorder Traversal` visits all nodes in ascending order of the node values
+
+```javascript
+function inOrder(node) {
+    if (node !== null) {
+        inOrder(node.left);
+        console.log(node.show() + " ");
+        inOrder(node.right);
+    }
+}
+
+var nums = new BST();
+
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
+nums.insert(22);
+
+inOrder(nums.root);
+// output
+// 3
+// 16
+// 22
+// 23
+// 37
+// 45
+// 99
+```
+
+-   `Preorder Traversal` visits the root node first, followed by the nodes in the subtrees under the left child of the root node, followed by the nodes in the subtrees under the right child of the root node
+
+```javascript
+function preOrder(node) {
+    if (node !== null) {
+        console.log(node.show() + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+}
+
+var nums = new BST();
+
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
+nums.insert(22);
+
+preOrder(nums.root);
+// output
+// 23
+// 16
+// 3
+// 22
+// 45
+// 37
+// 99
+```
+
+-   `Postorder Traversal` visits all child nodes of the left subtree up to the root node, and then visits all child nodes of the right subtree up to the root node
+
+```javascript
+function postOrder(node) {
+    if (node !== null) {
+        postOrder(node.left);
+        postOrder(node.right);
+        console.log(node.show() + " ");
+    }
+}
+
+var nums = new BST();
+
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
+nums.insert(22);
+
+postOrder(nums.root);
+// output
+// 3
+// 22
+// 16
+// 37
+// 99
+// 45
+// 23
+```
+
+### Usage
+
+| name       |   type   | description                      |
+| :--------- | :------: | :------------------------------- |
+| root       | property | The root node of the BST         |
+| insert     | function | Add new node to the BST          |
+| inOrder    | function | BST traversal function           |
+| preOrder   | function | BST traversal function           |
+| postOrder  | function | BST traversal function           |
+| getMin     | function | Get the minimum value in the BST |
+| getMax     | function | Get the maximum value in the BST |
+| find       | function | Get a specific value in the BST  |
+| remove     | function | Call removeNode function         |
+| removeNode | function | Remove a node from the BST       |
+
+Determine the insertion point algorithm:
+
+1. Set the root node to be the current node
+2. If the inserted data is less than current node data then the new current node is set to be the left child, but if it's greater than the current node then skip to step 4
+3. If the left child of the current node is null then insert the new node here and exit the loop, otherwise, skip to the next iteration of the loop
+4. Set the current node to be the right child of the current node
+5. If the right child of the current node is null then insert the new node here and exit the loop, otherwise, skip to the next iteration of the loop
+
+### BST Searches
+
+BST typically performs 3 type of searching:
+
+1. Specific value
+2. Minimum value
+3. Maximum value
+
+#### Search for the Minimum and Maximum Value
+
+`getMin()` function travels down the left link of each node in the BST until it reaches the left end, whereas `getMax()` function must simply traverse the right links of nodes until the function reaches the right end of the BST
+
+```javascript
+class BST {
+    ...
+    getMin() {
+        let currNode = this.root;
+        while (currNode.left !== null) {
+            currNode = currNode.left;
+        }
+        return currNode.data;
+    }
+
+    getMax() {
+        let currNode = this.root;
+        while (currNode.right !== null) {
+            currNode = currNode.right;
+        }
+        return currNode.data;
+    }
+    ...
+}
+```
+
+#### Search for a Specific Value
+
+`find` function returns the current node if the value is found in the BST and returns null if not found
+
+```javascript
+class BST {
+    ...
+    find(data) {
+        let currNode = this.root;
+        while (currNode !== data) {
+            if (data < currNode.data) {
+                currNode = currNode.left;
+            } else {
+                currNode = currNode.right;
+            }
+            if (currNode == null) {
+                return null;
+            }
+        }
+        return currNode;
+    }
+    ...
+}
+```
+
+#### Remove Nodes from a BST
+
+The removal process contains two functions, `remove()` function that receives the value to be removed and calls the second function `removeNode()`
+
+```javascript
+class BST {
+    ...
+
+// remove a node from the BST
+    remove(data) {
+        root = removeNode(this.root, data);
+    }
+
+    removeNode(node, data) {
+        if (node == null) {
+            return null;
+        }
+        if (data == node.data) {
+            // node has no children
+            if (node.left == null && node.right == null) {
+                return null;
+            }
+            // node has no left child
+            if (node.left == null) {
+                return node.right;
+            }
+            // node has no right child
+            if (node.right == null) {
+                return node.left;
+            }
+            // node has two children
+            let tempNode = getMin(node.right);
+            node.data = tempNode.data;
+            node.right = this.removeNode(node.left, data);
+            return node;
+        } else if (data < node.data) {
+            node.left = this.removeNode(node.left, data);
+            return node;
+        } else {
+            node.right = this.removeNode(node.right, data);
+            return node;
+        }
+    }
+     ...
+}
+```
+
+---
