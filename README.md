@@ -972,3 +972,134 @@ function Graph(vtx) {
     ...
 }
 ```
+
+---
+
+## Sorting Algorithms
+
+The technique used to rearrange data in a list is a set of nested for loops, where the outer loop moves
+through the list item by item while the inner loop is used to compare elements
+
+### Bubble Sort
+
+The bubble sort is one of the slowest sorting algorithms but it is also one of the easiest sorts to implement
+
+```javascript
+class Arr {
+    ...
+    bubbleSort() {
+        let num = this.dataStore.length;
+
+        for (let outer = num; outer >= 2; outer--) {
+            console.log("outer: " + outer);
+            for (let inner = 0; inner <= outer - 1; inner++) {
+                console.log("inner: " + inner);
+                if (this.dataStore[inner] > this.dataStore[inner + 1]) {
+                    this.swap(inner, inner + 1);
+                    console.log(this.dataStore);
+                }
+            }
+        }
+
+        return this.dataStore;
+    }
+    ...
+}
+```
+
+### Selection Sort
+
+The outer loop moves from the first element to the last element where the inner loop moves from the second element to the last element looking for values that are smaller than the element currently being pointed to by the outer loop, then the smallest value in the array is assigned its proper place in the array
+
+```javascript
+class Arr {
+    ...
+    selectionSort() {
+        let min;
+
+        for (let outer = 0; outer <= this.dataStore.length - 2; outer++) {
+            min = outer;
+
+            for (
+                let inner = outer + 1;
+                inner <= this.dataStore.length - 1;
+                inner++
+            ) {
+                if (this.dataStore[inner] < this.dataStore[min]) {
+                    min = inner;
+                }
+
+                this.swap(outer, min);
+            }
+        }
+
+        return this.dataStore;
+    }
+    ...
+}
+```
+
+### Insertion Sort
+
+The outer loop moves element by element through the array while the inner loop compares the element chosen in the outer loop to the element next to it in the array, if the element selected by the outer loop is less than the element selected by the inner loop then array elements are shifted over to the right to make room for the inner loop element
+
+```javascript
+class Arr {
+    ...
+    insertionSort() {
+        let inner, temp;
+
+        for (let outer = 0; outer < this.dataStore.length; outer++) {
+            temp = this.dataStore[outer];
+            inner = outer;
+
+            while (inner > 0 && this.dataStore[inner - 1] >= temp) {
+                this.dataStore[inner] = this.dataStore[inner - 1];
+                inner--;
+            }
+
+            this.dataStore[inner] = temp;
+        }
+
+        return this.dataStore;
+    }
+    ...
+}
+```
+
+### Shell Sort
+
+The shell sort algorithm is based on the insertion sort, the key concept is that it compares distant elements first rather than adjacent elements as is done in the insertion sort
+
+```javascript
+class Arr {
+    ...
+    shellSort() {
+        let n = this.dataStore.length;
+        let h = 1;
+
+        while (h < n / 3) {
+            h = 3 * h + 1;
+        }
+
+        while (h >= 1) {
+            for (let i = h; i < n; i++) {
+                for (
+                    let j = i;
+                    j >= h && this.dataStore[j] < this.dataStore[j - h];
+                    j -= h
+                ) {
+                    this.swap(j, j - h);
+                }
+            }
+
+            h = (h - 1) / 3;
+        }
+
+        return this.dataStore;
+    }
+    ...
+}
+```
+
+### Merge Sort
