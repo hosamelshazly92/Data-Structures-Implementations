@@ -982,7 +982,7 @@ through the list item by item while the inner loop is used to compare elements
 
 ### Bubble Sort
 
-The bubble sort is one of the slowest sorting algorithms but it is also one of the easiest sorts to implement
+The bubble sort algorithm works by swapping adjacent elements placed in wrong order, it's one of the slowest sorting algorithms but it is also one of the easiest sorts to implement
 
 ```javascript
 class Arr {
@@ -991,12 +991,9 @@ class Arr {
         let num = this.dataStore.length;
 
         for (let outer = num; outer >= 2; outer--) {
-            console.log("outer: " + outer);
             for (let inner = 0; inner <= outer - 1; inner++) {
-                console.log("inner: " + inner);
                 if (this.dataStore[inner] > this.dataStore[inner + 1]) {
                     this.swap(inner, inner + 1);
-                    console.log(this.dataStore);
                 }
             }
         }
@@ -1103,3 +1100,12 @@ class Arr {
 ```
 
 ### Merge Sort
+
+The Mergesort algorithm works by merging sorted sublists together to form a larger sorted list
+
+-   `Top-Bottom Merge Sort` recursive version of the merge sort algorithm
+-   `Bottom-Up Merge Sort` non recursive, or iterative, version of the merge sort algorithm
+
+#### Bottom-Up Merge Sort
+
+This algorithm begins by breaking down the data set into a set of one element arrays, then these arrays are merged by creating a set of left and right subarrays

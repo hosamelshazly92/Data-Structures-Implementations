@@ -123,3 +123,17 @@ class Arr {
 }
 
 module.exports = Arr;
+
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData());
+
+let s = new Date().getTime();
+
+console.log(nums.bubbleSort());
+console.log(nums.selectionSort());
+console.log(nums.insertionSort());
+console.log(nums.shellSort());
+
+let e = new Date().getTime();
+console.log(e - s + " ms");
