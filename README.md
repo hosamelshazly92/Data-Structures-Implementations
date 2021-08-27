@@ -1019,9 +1019,7 @@ class Arr {
         return this.dataStore;
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
