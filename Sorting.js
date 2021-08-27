@@ -121,6 +121,7 @@ class Arr {
         return this.dataStore;
     }
 
+    // merge sort
     mergeSort() {
         if (this.dataStore.length < 2) {
             return;
@@ -183,16 +184,26 @@ class Arr {
             }
         }
     }
+
+    quickSort() {
+        if (this.dataStore.length == 0) {
+            return [];
+        }
+
+        let lesser = [];
+        let greater = [];
+        let pivot = this.dataStore[0];
+
+        for (let i = 0; i < this.dataStore.length; i++) {
+            if (this.dataStore[i] < pivot) {
+                lesser.push(this.dataStore[i]);
+            } else {
+                greater.push(this.dataStore[i]);
+            }
+        }
+
+        return lesser.concat(greater);
+    }
 }
 
 module.exports = Arr;
-
-let nums = new Arr(5);
-nums.setData();
-console.log(nums.setData() + " => Array");
-
-console.log(nums.bubbleSort() + " => Bubble Sort");
-console.log(nums.selectionSort() + " => Selection Sort");
-console.log(nums.insertionSort() + " => Insertion Sort");
-console.log(nums.shellSort() + " => Shell Sort");
-console.log(nums.mergeSort() + " => Merge Sort");

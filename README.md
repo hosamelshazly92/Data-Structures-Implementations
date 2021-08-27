@@ -962,6 +962,8 @@ through the list item by item while the inner loop is used to compare elements
 
 The bubble sort algorithm works by swapping adjacent elements placed in wrong order, it's one of the slowest sorting algorithms but it is also one of the easiest sorts to implement
 
+#### Bubble Sort Implementation
+
 ```javascript
 class Arr {
     bubbleSort() {
@@ -980,9 +982,21 @@ class Arr {
 }
 ```
 
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 1,5,5,3,3 => Array
+
+console.log(nums.bubbleSort() + " => Bubble Sort");
+// output 1,3,3,5,5 => Bubble Sort
+```
+
 ### Selection Sort
 
 The outer loop moves from the first element to the last element where the inner loop moves from the second element to the last element looking for values that are smaller than the element currently being pointed to by the outer loop, then the smallest value in the array is assigned its proper place in the array
+
+#### Selection Sort Implementation
 
 ```javascript
 class Arr {
@@ -1010,9 +1024,21 @@ class Arr {
 }
 ```
 
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 5,2,0,2,1 => Array
+
+console.log(nums.selectionSort() + " => Selection Sort");
+// output 0,1,2,2,5 => Selection Sort
+```
+
 ### Insertion Sort
 
 The outer loop moves element by element through the array while the inner loop compares the element chosen in the outer loop to the element next to it in the array, if the element selected by the outer loop is less than the element selected by the inner loop then array elements are shifted over to the right to make room for the inner loop element
+
+#### Insertion Sort Implementation
 
 ```javascript
 class Arr {
@@ -1036,9 +1062,21 @@ class Arr {
 }
 ```
 
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 5,4,0,4,0 => Array
+
+console.log(nums.insertionSort() + " => Insertion Sort");
+// output 0,0,4,4,5 => Insertion Sort
+```
+
 ### Shell Sort
 
 The shell sort algorithm is based on the insertion sort, the key concept is that it compares distant elements first rather than adjacent elements as is done in the insertion sort
+
+#### Shell Sort Implementation
 
 ```javascript
 class Arr {
@@ -1069,6 +1107,16 @@ class Arr {
 }
 ```
 
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 0,2,3,1,1 => Array
+
+console.log(nums.shellSort() + " => Shell Sort");
+// output 0,1,1,2,3 => Shell Sort
+```
+
 ### Merge Sort
 
 The Mergesort algorithm works by merging sorted sublists together to form a larger sorted list
@@ -1079,6 +1127,8 @@ The Mergesort algorithm works by merging sorted sublists together to form a larg
 #### Bottom-Up Merge Sort
 
 This algorithm begins by breaking down the data set into a set of one element arrays, then these arrays are merged by creating a set of left and right subarrays
+
+#### Merge Sort Implementation
 
 ```javascript
 class Arr {
@@ -1145,4 +1195,60 @@ class Arr {
         }
     }
 }
+```
+
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 4,0,3,1,2 => Array
+
+console.log(nums.mergeSort() + " => Merge Sort");
+// output 0,1,2,3,4 => Merge Sort
+```
+
+### Quick Sort
+
+Quicksort is a divide and conquer algorithm that recursively breaks a list of data into smaller sublists consisting of smaller and larger elements, it's one of the fastest sorting algorithms for large data sets
+
+Quicksort algorithm:
+
+1. Picking a pivot element that divides the list into two sublists
+2. Reordering the list so that all elements less than the pivot element are placed before the pivot and all elements greater than the pivot are placed after it
+3. Repeating steps 1 & 2 on both the list with smaller and larger elements
+
+#### Quick Sort Implementation
+
+```javascript
+class Arr {
+    quickSort() {
+        if (this.dataStore.length == 0) {
+            return [];
+        }
+
+        let lesser = [];
+        let greater = [];
+        let pivot = this.dataStore[0];
+
+        for (let i = 0; i < this.dataStore.length; i++) {
+            if (this.dataStore[i] < pivot) {
+                lesser.push(this.dataStore[i]);
+            } else {
+                greater.push(this.dataStore[i]);
+            }
+        }
+
+        return lesser.concat(greater);
+    }
+}
+```
+
+```javascript
+let nums = new Arr(5);
+nums.setData();
+console.log(nums.setData() + " => Array");
+// output 5,0,2,2,4 => Array
+
+console.log(nums.quickSort() + " => Quick Sort");
+// output 0,2,2,4,5 => Quick Sort
 ```
