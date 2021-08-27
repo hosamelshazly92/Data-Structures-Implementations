@@ -1367,3 +1367,131 @@ let arr = [32, 1, 51, 18, 101, 94];
 console.log(binSearch(arr, 51));
 // output 2
 ```
+
+---
+
+## Advanced Algorithms
+
+-   `Dynamic Programming` starts at the bottom solving small problems and combining them to form an overall solution to the big problem, as opposed to recursion
+
+-   `Greedy Algorithm` looks for good solutions as it works toward the complete solution, these good solutions called **_local optima_** leads to the correct final solution called the **_global optimum_**
+
+### Dynamic Programming
+
+Dynamic programming is an efficient solution that builds a table usually using an array to hold the results of the many subsolutions, whereas recursive solutions to problems are inefficient
+
+-   A dynamic programming algorithm starts by solving the simplest subproblem, then using that solution to solve more complex subproblems until the entire problem is solved
+-   The solutions to each subproblem are typically stored in an array for easy access
+
+#### Fibonacci Sequence Recursive Solution
+
+```javascript
+function fib(num) {
+    if (num < 2) {
+        return num;
+    } else {
+        return fib(num - 1) + fib(num - 2);
+    }
+}
+
+console.log(fib(8));
+// output 21
+```
+
+#### Fibonacci Sequence Dynamic Programming Solution
+
+```javascript
+function fib(num) {
+    // array for storing results
+    let val = [];
+
+    for (let i = 0; i <= num; i++) {
+        val[i] = 0;
+    }
+
+    if (num == 1 || num == 2) {
+        return 1;
+    } else {
+        val[1] = 1;
+        val[2] = 2;
+
+        for (let i = 3; i <= num; i++) {
+            val[i] = val[i - 1] + val[i - 2];
+        }
+
+        return val[num - 1];
+    }
+}
+
+console.log(fib(8));
+// output 21
+```
+
+#### Knapsack Recursive Solution
+
+```javascript
+function max(a, b) {
+    return a > b ? a : b;
+}
+
+function knapsack(capacity, size, val, num) {
+    if (num == 0 || capacity == 0) {
+        return 0;
+    }
+
+    if (size[num - 1] > capacity) {
+        return knapsack(capacity, size, val, num - 1);
+    } else {
+        return max(
+            val[num - 1] +
+                knapsack(capacity - size[num - 1], size, val, num - 1),
+            knapsack(capacity, size, val, num - 1)
+        );
+    }
+}
+
+let size = [3, 4, 7, 8, 9];
+let val = [4, 5, 10, 11, 13];
+
+console.log(knapsack(16, size, val, 5));
+// output 23
+```
+
+#### Knapsack Dynamic Programming Solution
+
+```javascript
+function max(a, b) {
+    return a > b ? a : b;
+}
+
+function knapsack(capacity, size, val, num) {
+    let k = [];
+
+    for (let i = 0; i <= capacity + 1; i++) {
+        k[i] = [];
+    }
+
+    for (let i = 0; i <= num; i++) {
+        for (let j = 0; j <= capacity; j++) {
+            if (i == 0 || j == 0) {
+                k[i][j] = 0;
+            } else if (size[i - 1] <= j) {
+                k[i][j] = max(
+                    val[i - 1] + k[i - 1][j - size[i - 1]],
+                    k[i - 1][j]
+                );
+            } else {
+                k[i][j] = k[i - 1][j];
+            }
+        }
+    }
+
+    return k[num][capacity];
+}
+
+let size = [3, 4, 7, 8, 9];
+let val = [4, 5, 10, 11, 13];
+
+console.log(knapsack(16, size, val, 5));
+// output 23
+```
