@@ -10,6 +10,34 @@ function seqSearch(arr, data) {
     return -1;
 }
 
-let arr = [32, 1, 51, 18, 101, 94];
-console.log(seqSearch(arr, 11));
-console.log(seqSearch(arr, 18));
+// find minimum value
+function findMin(arr) {
+    let min = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    return min;
+}
+
+// find maximum value
+function findMax(arr) {
+    let max = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+module.exports = {
+    seqSearch,
+    findMin,
+    findMax,
+};

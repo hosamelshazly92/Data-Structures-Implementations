@@ -245,7 +245,7 @@ distribute(nums, queues, 10);
 collect(queues, nums);
 
 console.log(nums);
-// output [6, 10, 12, 29, 36, 49, 56, 69, 75, 75, 81, 95];
+// output [6, 10, 12, 29, 36, 49, 56, 69, 75, 75, 81, 95]
 ```
 
 ---
@@ -1284,8 +1284,54 @@ function seqSearch(arr, data) {
 let arr = [32, 1, 51, 18, 101, 94];
 
 console.log(seqSearch(arr, 11));
-// ouput -1
+// output -1
 
 console.log(seqSearch(arr, 18));
-// outpu 3
+// output 3
+```
+
+### Searching for Minimum and Maximum Values
+
+Searching algorithm:
+
+1. Assigning the first element to a variable as the minimum value
+2. Looping through the array to compare each element with the current minimum value
+3. Assigning the current element as the new minimum value if the current element has a lesser value than the current minimum value
+4. Moving to the next element and repeating step 3
+5. The minimum value is stored in the variable when the program ends
+
+#### Sequential Search Implementation
+
+```javascript
+function findMin(arr) {
+    let min = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    return min;
+}
+
+function findMax(arr) {
+    let max = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+let arr = [32, 1, 51, 18, 101, 94];
+
+console.log(findMin(arr));
+// output 1
+
+console.log(findMax(arr));
+// output 101
 ```
