@@ -955,8 +955,7 @@ function Graph(vtx) {
 
 ## Sorting Algorithms
 
-The technique used to rearrange data in a list is a set of nested for loops, where the outer loop moves
-through the list item by item while the inner loop is used to compare elements
+The technique used to rearrange data in a list is a set of nested for loops, where the outer loop moves through the list item by item while the inner loop is used to compare elements
 
 ### Bubble Sort
 
@@ -1251,4 +1250,42 @@ console.log(nums.setData() + " => Array");
 
 console.log(nums.quickSort() + " => Quick Sort");
 // output 0,2,2,4,5 => Quick Sort
+```
+
+---
+
+## Searching Algorithms
+
+There are two ways to search for data in a list:
+
+-   Sequential Search, used when the items in a list are in random order
+
+-   Binary Search, used when the items in a list are in sorted order
+
+Binary search is more efficient although it takes extra time to sort the data set before searching for a value
+
+### Sequential Search
+
+Begining at the first element and moving to each element until reaching the end of the list, also called **_linear search_**
+
+#### Sequential Search Implementation
+
+```javascript
+function seqSearch(arr, data) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == data) {
+            return arr.indexOf(data);
+        }
+    }
+
+    return -1;
+}
+
+let arr = [32, 1, 51, 18, 101, 94];
+
+console.log(seqSearch(arr, 11));
+// ouput -1
+
+console.log(seqSearch(arr, 18));
+// outpu 3
 ```
