@@ -415,13 +415,11 @@ When two keys generate the same hash value, each key can be stored in a differen
 ```javascript
 // Hash class
 class Hash {
-    ...
     buildChains() {
         for (let i = 0; i < this.table.length; i++) {
             this.table[i] = new Array();
         }
     }
-    ...
 }
 ```
 
@@ -432,7 +430,6 @@ When collision happens the new key is placed in the next empty element in the ta
 ```javascript
 // Hash class
 class Hash {
-    ...
     constructor() {
         this.values = [];
     }
@@ -445,13 +442,12 @@ class Hash {
         } else {
             while (this.table[pos] != undefined) {
                 pos++;
-                }
-                this.table[pos] = key;
-                this.values[pos] = data;
+            }
+            this.table[pos] = key;
+            this.values[pos] = data;
         }
         this.table[pos] = data;
     }
-    ...
 }
 ```
 
@@ -670,7 +666,6 @@ BST typically performs 3 type of searching:
 
 ```javascript
 class BST {
-    ...
     getMin() {
         let currNode = this.root;
         while (currNode.left !== null) {
@@ -686,7 +681,6 @@ class BST {
         }
         return currNode.data;
     }
-    ...
 }
 ```
 
@@ -696,7 +690,6 @@ class BST {
 
 ```javascript
 class BST {
-    ...
     find(data) {
         let currNode = this.root;
         while (currNode !== data) {
@@ -711,7 +704,6 @@ class BST {
         }
         return currNode;
     }
-    ...
 }
 ```
 
@@ -721,9 +713,6 @@ The removal process contains two functions, `remove()` function that receives th
 
 ```javascript
 class BST {
-    ...
-
-// remove a node from the BST
     remove(data) {
         root = removeNode(this.root, data);
     }
@@ -741,11 +730,11 @@ class BST {
             if (node.left == null) {
                 return node.right;
             }
-            // node has no right child
+
             if (node.right == null) {
                 return node.left;
             }
-            // node has two children
+
             let tempNode = getMin(node.right);
             node.data = tempNode.data;
             node.right = this.removeNode(node.left, data);
@@ -758,7 +747,6 @@ class BST {
             return node;
         }
     }
-     ...
 }
 ```
 
@@ -807,13 +795,11 @@ Edges describe the structure of a graph
 
 ```javascript
 function Graph(vtx) {
-    ...
     this.addEdge = function (a, b) {
         this.adj[a].push(b);
         this.adj[b].push(a);
         this.edges++;
     };
-    ...
 }
 ```
 
@@ -840,7 +826,6 @@ Check all paths that can be followed in a graph
 
 ```javascript
 function Graph(vtx) {
-    ...
     this.dfs = function (vtx = 0) {
         this.marked[vtx] = true;
 
@@ -850,7 +835,6 @@ function Graph(vtx) {
             }
         }
     };
-    ...
 }
 
 let graph = new Graph(5);
@@ -875,7 +859,6 @@ BFS moves through a graph layer by layer, first examining layers closer to the f
 
 ```javascript
 function Graph(vtx) {
-    ...
     this.bfs = function (start) {
         let queue = [];
         this.marked[start] = true;
@@ -892,7 +875,6 @@ function Graph(vtx) {
             }
         }
     };
-    ...
 }
 
 let graph = new Graph(5);
@@ -919,9 +901,8 @@ Modify the breadth-first search algorithm so that it records the paths that lead
 
 ```javascript
 function Graph(vtx) {
-    ...
     this.edgeTo = [];
-    ...
+
     this.bfs = function (start) {
         let queue = [];
         this.marked[start] = true;
@@ -939,7 +920,6 @@ function Graph(vtx) {
             }
         }
     };
-    ...
 }
 ```
 
@@ -947,7 +927,6 @@ function Graph(vtx) {
 
 ```javascript
 function Graph(vtx) {
-    ...
     this.pathTo = function (vtx) {
         let src = 0;
 
@@ -969,7 +948,6 @@ function Graph(vtx) {
     this.hasPathTo = function (vtx) {
         return this.marked[vtx];
     };
-    ...
 }
 ```
 
@@ -986,7 +964,6 @@ The bubble sort algorithm works by swapping adjacent elements placed in wrong or
 
 ```javascript
 class Arr {
-    ...
     bubbleSort() {
         let num = this.dataStore.length;
 
@@ -1000,7 +977,6 @@ class Arr {
 
         return this.dataStore;
     }
-    ...
 }
 ```
 
@@ -1010,7 +986,6 @@ The outer loop moves from the first element to the last element where the inner 
 
 ```javascript
 class Arr {
-    ...
     selectionSort() {
         let min;
 
@@ -1032,7 +1007,6 @@ class Arr {
 
         return this.dataStore;
     }
-    ...
 }
 ```
 
@@ -1042,7 +1016,6 @@ The outer loop moves element by element through the array while the inner loop c
 
 ```javascript
 class Arr {
-    ...
     insertionSort() {
         let inner, temp;
 
@@ -1060,7 +1033,6 @@ class Arr {
 
         return this.dataStore;
     }
-    ...
 }
 ```
 
@@ -1070,7 +1042,6 @@ The shell sort algorithm is based on the insertion sort, the key concept is that
 
 ```javascript
 class Arr {
-    ...
     shellSort() {
         let n = this.dataStore.length;
         let h = 1;
@@ -1095,7 +1066,6 @@ class Arr {
 
         return this.dataStore;
     }
-    ...
 }
 ```
 
@@ -1103,9 +1073,76 @@ class Arr {
 
 The Mergesort algorithm works by merging sorted sublists together to form a larger sorted list
 
--   `Top-Bottom Merge Sort` recursive version of the merge sort algorithm
--   `Bottom-Up Merge Sort` non recursive, or iterative, version of the merge sort algorithm
+-   `Top-Bottom Merge Sort` the recursive version of the merge sort algorithm
+-   `Bottom-Up Merge Sort` the non recursive, or iterative, version of the merge sort algorithm
 
 #### Bottom-Up Merge Sort
 
 This algorithm begins by breaking down the data set into a set of one element arrays, then these arrays are merged by creating a set of left and right subarrays
+
+```javascript
+class Arr {
+    mergeSort() {
+        if (this.dataStore.length < 2) {
+            return;
+        }
+
+        let step = 1;
+        let left, right;
+
+        while (step < this.dataStore.length) {
+            left = 0;
+            right = step;
+
+            while (right + step <= this.dataStore.length) {
+                this.mergeArr(left, left + step, right, right + step);
+                left = right + step;
+                right = left + step;
+            }
+
+            if (right < this.dataStore.length) {
+                this.mergeArr(left, left + step, right, this.dataStore.length);
+            }
+
+            step *= 2;
+        }
+
+        return this.dataStore;
+    }
+
+    mergeArr(sLeft, eLeft, sRight, eRight) {
+        let k;
+        let leftArr = new Array(eLeft - sLeft + 1);
+        let rightArr = new Array(eRight - sRight + 1);
+        k = sRight;
+
+        for (let i = 0; i < rightArr.length - 1; i++) {
+            rightArr[i] = this.dataStore[k];
+            k++;
+        }
+
+        k = sLeft;
+
+        for (let i = 0; i < leftArr.length - 1; i++) {
+            leftArr[i] = this.dataStore[k];
+            k++;
+        }
+
+        rightArr[rightArr.length - 1] = Infinity;
+        leftArr[leftArr.length - 1] = Infinity;
+
+        let m = 0;
+        let n = 0;
+
+        for (let k = sLeft; k < eRight; k++) {
+            if (leftArr[m] <= rightArr[n]) {
+                this.dataStore[k] = leftArr[m];
+                m++;
+            } else {
+                this.dataStore[k] = rightArr[n];
+                n++;
+            }
+        }
+    }
+}
+```

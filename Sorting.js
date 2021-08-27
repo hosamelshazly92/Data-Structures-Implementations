@@ -120,20 +120,79 @@ class Arr {
 
         return this.dataStore;
     }
+
+    mergeSort() {
+        if (this.dataStore.length < 2) {
+            return;
+        }
+
+        let step = 1;
+        let left, right;
+
+        while (step < this.dataStore.length) {
+            left = 0;
+            right = step;
+
+            while (right + step <= this.dataStore.length) {
+                this.mergeArr(left, left + step, right, right + step);
+                left = right + step;
+                right = left + step;
+            }
+
+            if (right < this.dataStore.length) {
+                this.mergeArr(left, left + step, right, this.dataStore.length);
+            }
+
+            step *= 2;
+        }
+
+        return this.dataStore;
+    }
+
+    mergeArr(sLeft, eLeft, sRight, eRight) {
+        let k;
+        let leftArr = new Array(eLeft - sLeft + 1);
+        let rightArr = new Array(eRight - sRight + 1);
+        k = sRight;
+
+        for (let i = 0; i < rightArr.length - 1; i++) {
+            rightArr[i] = this.dataStore[k];
+            k++;
+        }
+
+        k = sLeft;
+
+        for (let i = 0; i < leftArr.length - 1; i++) {
+            leftArr[i] = this.dataStore[k];
+            k++;
+        }
+
+        rightArr[rightArr.length - 1] = Infinity;
+        leftArr[leftArr.length - 1] = Infinity;
+
+        let m = 0;
+        let n = 0;
+
+        for (let k = sLeft; k < eRight; k++) {
+            if (leftArr[m] <= rightArr[n]) {
+                this.dataStore[k] = leftArr[m];
+                m++;
+            } else {
+                this.dataStore[k] = rightArr[n];
+                n++;
+            }
+        }
+    }
 }
 
 module.exports = Arr;
 
 let nums = new Arr(5);
 nums.setData();
-console.log(nums.setData());
+console.log(nums.setData() + " => Array");
 
-let s = new Date().getTime();
-
-console.log(nums.bubbleSort());
-console.log(nums.selectionSort());
-console.log(nums.insertionSort());
-console.log(nums.shellSort());
-
-let e = new Date().getTime();
-console.log(e - s + " ms");
+console.log(nums.bubbleSort() + " => Bubble Sort");
+console.log(nums.selectionSort() + " => Selection Sort");
+console.log(nums.insertionSort() + " => Insertion Sort");
+console.log(nums.shellSort() + " => Shell Sort");
+console.log(nums.mergeSort() + " => Merge Sort");
