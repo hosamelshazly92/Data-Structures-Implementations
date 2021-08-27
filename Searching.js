@@ -36,8 +36,29 @@ function findMax(arr) {
     return max;
 }
 
+// binary seqrch
+function binSearch(arr, data) {
+    let lower = 0;
+    let upper = arr.length - 1;
+
+    while (lower <= upper) {
+        let mid = Math.floor((upper + lower) / 2);
+
+        if (arr[mid] < data) {
+            lower = mid + 1;
+        } else if (arr[mid] > data) {
+            upper = mid - 1;
+        } else {
+            return mid;
+        }
+    }
+
+    return -1;
+}
+
 module.exports = {
     seqSearch,
     findMin,
     findMax,
+    binSearch,
 };

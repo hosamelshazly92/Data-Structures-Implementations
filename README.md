@@ -80,7 +80,7 @@ A stack is a list of elements that are accessible only from the top, aka `LIFO`
 
 Convert any given number between bases from 2 through 9 only
 
-The performing algorithm:
+Performing Stack algorithm:
 
 1. Push `num % base` to the stack
 2. Number is updated to be `num / base` for the next iteration
@@ -644,7 +644,7 @@ postOrder(nums.root);
 | remove     | function | Call removeNode function         |
 | removeNode | function | Remove a node from the BST       |
 
-Determine the insertion point algorithm:
+Performing Insertion point algorithm:
 
 1. Set the root node to be the current node
 2. If the inserted data is less than current node data then the new current node is set to be the left child, but if it's greater than the current node then skip to step 4
@@ -979,9 +979,7 @@ class Arr {
         return this.dataStore;
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
@@ -1059,9 +1057,7 @@ class Arr {
         return this.dataStore;
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
@@ -1104,9 +1100,7 @@ class Arr {
         return this.dataStore;
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
@@ -1194,9 +1188,7 @@ class Arr {
         }
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
@@ -1210,7 +1202,7 @@ console.log(nums.mergeSort() + " => Merge Sort");
 
 Quicksort is a divide and conquer algorithm that recursively breaks a list of data into smaller sublists consisting of smaller and larger elements, it's one of the fastest sorting algorithms for large data sets
 
-Quicksort algorithm:
+Performing Quicksort algorithm:
 
 1. Picking a pivot element that divides the list into two sublists
 2. Reordering the list so that all elements less than the pivot element are placed before the pivot and all elements greater than the pivot are placed after it
@@ -1240,9 +1232,7 @@ class Arr {
         return lesser.concat(greater);
     }
 }
-```
 
-```javascript
 let nums = new Arr(5);
 nums.setData();
 console.log(nums.setData() + " => Array");
@@ -1292,7 +1282,7 @@ console.log(seqSearch(arr, 18));
 
 ### Searching for Minimum and Maximum Values
 
-Searching algorithm:
+Performing Searching algorithm:
 
 1. Assigning the first element to a variable as the minimum value
 2. Looping through the array to compare each element with the current minimum value
@@ -1334,4 +1324,46 @@ console.log(findMin(arr));
 
 console.log(findMax(arr));
 // output 101
+```
+
+### Binary Search
+
+When data is sorted a more efficient search than the sequential search is the binary search
+
+Performing Binary search algorithm:
+
+1. Setting a lower bound to the first position of the array (0)
+2. Setting an upper bound to the last element of the array (array length - 1)
+3. While the lower bound is less than or equal to the upper bound:
+   a. Setting the midpoint as **_(upper bound - lower bound) / 2_**
+   b. If the midpoint element is less than the data being searched for, setting a new lower bound to the **_midpoint + 1_**
+   c. If the midpoint element is greater than the data being searched for, setting a new upper bound to the **_midpoint - 1_**
+   d. Otherwise the midpoint is returned as the found element
+
+#### Binary Search Implementation
+
+```javascript
+function binSearch(arr, data) {
+    let lower = 0;
+    let upper = arr.length - 1;
+
+    while (lower <= upper) {
+        let mid = Math.floor((upper + lower) / 2);
+
+        if (arr[mid] < data) {
+            lower = mid + 1;
+        } else if (arr[mid] > data) {
+            upper = mid - 1;
+        } else {
+            return mid;
+        }
+    }
+
+    return -1;
+}
+
+let arr = [32, 1, 51, 18, 101, 94];
+
+console.log(binSearch(arr, 51));
+// output 2
 ```
