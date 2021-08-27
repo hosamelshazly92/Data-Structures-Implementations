@@ -953,11 +953,11 @@ function Graph(vtx) {
 
 ---
 
-## Sorting Algorithms
+# Sorting Algorithms
 
 The technique used to rearrange data in a list is a set of nested for loops, where the outer loop moves through the list item by item while the inner loop is used to compare elements
 
-### Bubble Sort
+## Bubble Sort
 
 The bubble sort algorithm works by swapping adjacent elements placed in wrong order, it's one of the slowest sorting algorithms but it is also one of the easiest sorts to implement
 
@@ -989,7 +989,7 @@ console.log(nums.bubbleSort() + " => Bubble Sort");
 // output 1,3,3,5,5 => Bubble Sort
 ```
 
-### Selection Sort
+## Selection Sort
 
 The outer loop moves from the first element to the last element where the inner loop moves from the second element to the last element looking for values that are smaller than the element currently being pointed to by the outer loop, then the smallest value in the array is assigned its proper place in the array
 
@@ -1031,7 +1031,7 @@ console.log(nums.selectionSort() + " => Selection Sort");
 // output 0,1,2,2,5 => Selection Sort
 ```
 
-### Insertion Sort
+## Insertion Sort
 
 The outer loop moves element by element through the array while the inner loop compares the element chosen in the outer loop to the element next to it in the array, if the element selected by the outer loop is less than the element selected by the inner loop then array elements are shifted over to the right to make room for the inner loop element
 
@@ -1067,7 +1067,7 @@ console.log(nums.insertionSort() + " => Insertion Sort");
 // output 0,0,4,4,5 => Insertion Sort
 ```
 
-### Shell Sort
+## Shell Sort
 
 The shell sort algorithm is based on the insertion sort, the key concept is that it compares distant elements first rather than adjacent elements as is done in the insertion sort
 
@@ -1110,7 +1110,7 @@ console.log(nums.shellSort() + " => Shell Sort");
 // output 0,1,1,2,3 => Shell Sort
 ```
 
-### Merge Sort
+## Merge Sort
 
 The Mergesort algorithm works by merging sorted sublists together to form a larger sorted list
 
@@ -1198,7 +1198,7 @@ console.log(nums.mergeSort() + " => Merge Sort");
 // output 0,1,2,3,4 => Merge Sort
 ```
 
-### Quick Sort
+## Quick Sort
 
 Quicksort is a divide and conquer algorithm that recursively breaks a list of data into smaller sublists consisting of smaller and larger elements, it's one of the fastest sorting algorithms for large data sets
 
@@ -1244,7 +1244,7 @@ console.log(nums.quickSort() + " => Quick Sort");
 
 ---
 
-## Searching Algorithms
+# Searching Algorithms
 
 There are two ways to search for data in a list:
 
@@ -1254,7 +1254,7 @@ There are two ways to search for data in a list:
 
 Binary search is more efficient although it takes extra time to sort the data set before searching for a value
 
-### Sequential Search
+## Sequential Search
 
 Begining at the first element and moving to each element until reaching the end of the list, also called **_linear search_**
 
@@ -1326,7 +1326,7 @@ console.log(findMax(arr));
 // output 101
 ```
 
-### Binary Search
+## Binary Search
 
 When data is sorted a more efficient search than the sequential search is the binary search
 
@@ -1370,20 +1370,20 @@ console.log(binSearch(arr, 51));
 
 ---
 
-## Advanced Algorithms
+# Advanced Algorithms
 
 -   `Dynamic Programming` starts at the bottom solving small problems and combining them to form an overall solution to the big problem, as opposed to recursion
 
 -   `Greedy Algorithm` looks for good solutions as it works toward the complete solution, these good solutions called **_local optima_** leads to the correct final solution called the **_global optimum_**
 
-### Dynamic Programming
+## Dynamic Programming
 
 Dynamic programming is an efficient solution that builds a table usually using an array to hold the results of the many subsolutions, whereas recursive solutions to problems are inefficient
 
 -   A dynamic programming algorithm starts by solving the simplest subproblem, then using that solution to solve more complex subproblems until the entire problem is solved
 -   The solutions to each subproblem are typically stored in an array for easy access
 
-#### Fibonacci Sequence Recursive Solution
+#### Recursive Fibonacci Sequence
 
 ```javascript
 function fib(num) {
@@ -1398,7 +1398,7 @@ console.log(fib(8));
 // output 21
 ```
 
-#### Fibonacci Sequence Dynamic Programming Solution
+#### Dynamic Programming Fibonacci Sequence
 
 ```javascript
 function fib(num) {
@@ -1427,7 +1427,7 @@ console.log(fib(8));
 // output 21
 ```
 
-#### Knapsack Recursive Solution
+#### Recursive Knapsack
 
 ```javascript
 function max(a, b) {
@@ -1457,7 +1457,7 @@ console.log(knapsack(16, size, val, 5));
 // output 23
 ```
 
-#### Knapsack Dynamic Programming Solution
+#### Dynamic Programming Knapsack
 
 ```javascript
 function max(a, b) {
@@ -1494,4 +1494,45 @@ let val = [4, 5, 10, 11, 13];
 
 console.log(knapsack(16, size, val, 5));
 // output 23
+```
+
+## Greedy Algorithms
+
+A greedy algorithm is one that always chooses the best solution at the time, with no regard to how that choice will affect future
+
+#### Greedy Algorithm Knapsack
+
+Performing fractional knapsack greedy algorithm:
+
+1. Knapsack has a capacity W and items have values V and weights w
+2. Ranking items by v/w ratio
+3. Considering items in terms of decreasing ratio
+4. Taking as much of each item as possible
+
+```javascript
+function knapsack(values, weights, capacity) {
+    let load = 0;
+    let i = 0;
+    let w = 0;
+
+    while (load < capacity && i < 4) {
+        if (weights[i] <= capacity - load) {
+            w += values[i];
+            load += weights[i];
+        } else {
+            let r = (capacity - load) / weights[i];
+            w += r * values[i];
+            load += weights[i];
+        }
+        i++;
+    }
+
+    return w;
+}
+
+var values = [50, 140, 60, 60];
+var weights = [5, 20, 10, 12];
+
+console.log(knapsack(values, weights, 30));
+// output 220
 ```
